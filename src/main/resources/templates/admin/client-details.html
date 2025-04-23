@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Szczegóły Klienta - Admin</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Szczegóły Klienta</h1>
+  <nav>
+    <a th:href="@{/templates/admin/clients}">Powrót do listy klientów</a>
+  </nav>
+</header>
+<main>
+  <section>
+    <h2>Dane Klienta</h2>
+    <p><strong>ID:</strong> <span th:text="${client.id}">1</span></p>
+    <p><strong>Imię:</strong> <span th:text="${client.imie}">Jan</span></p>
+    <p><strong>Nazwisko:</strong> <span th:text="${client.nazwisko}">Kowalski</span></p>
+    <p><strong>Numer klienta:</strong> <span th:text="${client.numerKlienta}">12345</span></p>
+  </section>
+  <section>
+    <h2>Abonamenty</h2>
+    <table>
+      <thead>
+      <tr><th>ID Abonamentu</th><th>Typ</th></tr>
+      </thead>
+      <tbody>
+      <tr th:each="abon : ${client.abonamenty}">
+        <td th:text="${abon.id}">1</td>
+        <td th:text="${abon.typAbonamentu}">BASIC</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 Telewizja App</p>
+</footer>
+</body>
+</html>

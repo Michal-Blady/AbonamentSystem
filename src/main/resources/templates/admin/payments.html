@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Wpłaty - Admin</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Wpłaty</h1>
+  <nav>
+    <a th:href="@{/templates/admin/dashboard}">Dashboard</a>
+    <a th:href="@{/templates/admin/clients}">Klienci</a>
+    <a th:href="@{/templates/admin/abonaments}">Abonamenty</a>
+    <a th:href="@{/templates/admin/billings}">Należności</a>
+    <a th:href="@{/templates/admin/payments}">Wpłaty</a>
+    <a th:href="@{/templates/admin/pricelist}">Cennik</a>
+    <a th:href="@{/templates/admin/notifications}">Powiadomienia</a>
+    <a>Aktualna data symulowana: <span th:text="${simulatedDate}"></span></a>
+  </nav>
+</header>
+<main>
+  <section>
+    <h2>Lista Wpłat</h2>
+    <a th:href="@{/templates/admin/add-payment}" class="btn">Dodaj wpłatę</a>
+
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Klient</th>
+        <th>Termin wpłaty</th>
+        <th>Kwota</th>
+        <th>Akcje</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="pay : ${payments}">
+        <td th:text="${pay.id}">1</td>
+        <td th:text="${pay.abonament.klient.imie} + ' ' + ${pay.abonament.klient.nazwisko}">Jan Kowalski</td>
+        <td th:text="${pay.terminWplaty}">2025-01-02</td>
+        <td th:text="${pay.kwotaWplaty}">100.00</td>
+        <td>
+          <a th:href="@{'/admin/edit-payment/' + ${pay.id}}" class="btn">Edytuj</a>
+          <a th:href="@{'/admin/delete-payment/' + ${pay.id}}" class="btn"
+             onclick="return confirm('Czy na pewno chcesz usunąć tę wpłatę?');">Usuń</a>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 Telewizja App</p>
+</footer>
+</body>
+</html>

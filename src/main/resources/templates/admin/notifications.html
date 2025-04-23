@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Powiadomienia - Admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Powiadomienia</h1>
+    <nav>
+        <a th:href="@{/templates/admin/dashboard}">Dashboard</a>
+        <a th:href="@{/templates/admin/clients}">Klienci</a>
+        <a th:href="@{/templates/admin/abonaments}">Abonamenty</a>
+        <a th:href="@{/templates/admin/billings}">Należności</a>
+        <a th:href="@{/templates/admin/payments}">Wpłaty</a>
+        <a th:href="@{/templates/admin/pricelist}">Cennik</a>
+        <a>Aktualna data symulowana: <span th:text="${simulatedDate}"></span></a>
+
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>Wszystkie Powiadomienia</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Data</th><th>Abonament ID</th><th>Klient</th><th>Treść</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="n : ${notifications}">
+                <td th:text="${n.dataUtworzenia}"></td>
+                <td th:text="${n.klient.abonamenty[0].id}"></td>
+                <td th:text="${n.klient.imie} + ' ' + ${n.klient.nazwisko}"></td>
+                <td th:text="${n.tresc}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Telewizja App</p>
+</footer>
+</body>
+</html>

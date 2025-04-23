@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Klienta</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Panel Klienta</h1>
+  <nav>
+    <a th:href="@{/templates/client/dashboard}">Dashboard</a>
+    <a th:href="@{/templates/client/abonaments}">Abonamenty</a>
+    <a th:href="@{/templates/client/billings}">Należności</a>
+    <a th:href="@{/templates/client/payments}">Wpłaty</a>
+    <a th:href="@{/templates/client/pricelist}">Cennik</a>
+    <a th:href="@{/templates/client/notifications}">Powiadomienia</a>
+    <span>Aktualna data symulowana: <span class="simulated-date">…</span></span>
+
+  </nav>
+</header>
+<main>
+  <section>
+    <h2>Informacje o koncie</h2>
+    <p>ID: <span th:text="${client.id}"></span></p>
+    <p>Imię: <span th:text="${client.imie}"></span></p>
+    <p>Nazwisko: <span th:text="${client.nazwisko}"></span></p>
+    <p>Numer klienta: <span th:text="${client.numerKlienta}"></span></p>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 Telewizja App</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj Należność - Admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Dodaj Należność</h1>
+    <nav>
+        <a th:href="@{/templates/admin/billings}">Powrót do listy należności</a>
+    </nav>
+</header>
+<main>
+    <section>
+        <form th:action="@{/templates/admin/add-billing}" th:object="${billing}" method="post">
+            <div>
+                <label>Abonament ID:</label>
+                <input type="number" th:field="*{abonament.id}" required />
+            </div>
+            <div>
+                <label>Termin płatności:</label>
+                <input type="date" th:field="*{terminPlatnosci}" required />
+            </div>
+            <div>
+                <label>Kwota:</label>
+                <input type="number" step="0.01" th:field="*{kwotaDoZaplaty}" required />
+            </div>
+            <div>
+                <label>Status:</label>
+                <select th:field="*{oplacone}">
+                    <option th:value="false">Nieopłacone</option>
+                    <option th:value="true">Opłacone</option>
+                </select>
+            </div>
+            <button type="submit">Dodaj należność</button>
+        </form>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2025 Telewizja App</p>
+</footer>
+</body>
+</html>

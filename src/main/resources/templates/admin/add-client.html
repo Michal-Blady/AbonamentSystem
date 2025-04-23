@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><title>Dodaj Klienta</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Dodaj Klienta</h1>
+  <nav><a th:href="@{/templates/admin/clients}">Powrót</a></nav>
+</header>
+<main>
+  <form th:action="@{/templates/admin/add-client}" th:object="${client}" method="post">
+    <div><label>Imię:</label><input type="text" th:field="*{imie}" required /></div>
+    <div><label>Nazwisko:</label><input type="text" th:field="*{nazwisko}" required /></div>
+    <div><label>Numer klienta:</label><input type="text" th:field="*{numerKlienta}" required /></div>
+    <button type="submit">Dodaj</button>
+  </form>
+</main>
+</body>
+</html>

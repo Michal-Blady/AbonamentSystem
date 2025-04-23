@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Klienci - Admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Klienci</h1>
+    <nav>
+        <a th:href="@{/templates/admin/dashboard}">Dashboard</a>
+        <a th:href="@{/templates/admin/clients}">Klienci</a>
+        <a th:href="@{/templates/admin/abonaments}">Abonamenty</a>
+        <a th:href="@{/templates/admin/billings}">Należności</a>
+        <a th:href="@{/templates/admin/payments}">Wpłaty</a>
+        <a th:href="@{/templates/admin/pricelist}">Cennik</a>
+        <a th:href="@{/templates/admin/notifications}">Powiadomienia</a>
+        <a>Aktualna data symulowana: <span th:text="${simulatedDate}"></span></a>
+
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>Wyszukaj Klienta</h2>
+        <form method="get" th:action="@{/templates/admin/clients}">
+            <input type="text" name="imie" placeholder="Imię" />
+            <input type="text" name="nazwisko" placeholder="Nazwisko" />
+            <button type="submit">Filtruj</button>
+        </form>
+    </section>
+    <section>
+        <h2>Lista Klientów</h2>
+        <a th:href="@{/templates/admin/add-client}" class="btn">Dodaj klienta</a>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Numer klienta</th>
+                <th>Szczegóły</th>
+                <th>Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.id}">1</td>
+                <td th:text="${client.imie}">Jan</td>
+                <td th:text="${client.nazwisko}">Kowalski</td>
+                <td th:text="${client.numerKlienta}">12345</td>
+                <td>
+                    <a th:href="@{'/admin/clients/' + ${client.id}}">Pokaż</a>
+                </td>
+                <td>
+                    <a th:href="@{'/admin/edit-client/' + ${client.id}}" class="btn">Edytuj</a>
+                    <a th:href="@{'/admin/delete-client/' + ${client.id}}"
+                       onclick="return confirm('Usuń klienta?');" class="btn">Usuń</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2025 Telewizja App</p>
+</footer>
+</body>
+</html>

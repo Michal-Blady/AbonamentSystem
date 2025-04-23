@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Moje Należności</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<header>
+    <h1>Moje Należności</h1>
+    <nav>
+        <a th:href="@{/templates/client/dashboard}">Dashboard</a>
+        <a th:href="@{/templates/client/abonaments}">Abonamenty</a>
+        <a th:href="@{/templates/client/billings}">Należności</a>
+        <a th:href="@{/templates/client/payments}">Wpłaty</a>
+        <a th:href="@{/templates/client/pricelist}">Cennik</a>
+        <a th:href="@{/templates/client/notifications}">Powiadomienia</a>
+        <span>Aktualna data symulowana: <span class="simulated-date">…</span></span>
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>Lista Należności</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Termin płatności</th>
+                <th>Kwota</th>
+                <th>Status</th>
+                <th>Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bill : ${billings}">
+                <td th:text="${bill.id}">1</td>
+                <td th:text="${bill.terminPlatnosci}">2025-01-01</td>
+                <td th:text="${bill.kwotaDoZaplaty}">100.00</td>
+                <td th:text="${bill.oplacone ? 'Opłacone' : 'Nieopłacone'}">Nieopłacone</td>
+                <td>
+        <span th:if="${!bill.oplacone}">
+          <a th:href="@{'/client/pay-billing/' + ${bill.id}}" class="btn">Zapłać</a>
+        </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </section>
+</main>
+<footer>
+    <p>&copy; 2025 Telewizja App</p>
+</footer>
+
+</body>
+</html>

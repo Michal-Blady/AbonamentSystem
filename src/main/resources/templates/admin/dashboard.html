@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Administratora</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<header>
+  <h1>Panel Administratora</h1>
+  <nav>
+    <a th:href="@{/templates/admin/dashboard}">Dashboard</a>
+    <a th:href="@{/templates/admin/clients}">Klienci</a>
+    <a th:href="@{/templates/admin/abonaments}">Abonamenty</a>
+    <a th:href="@{/templates/admin/billings}">Należności</a>
+    <a th:href="@{/templates/admin/payments}">Wpłaty</a>
+    <a th:href="@{/templates/admin/pricelist}">Cennik</a>
+    <a th:href="@{/templates/admin/notifications}">Powiadomienia</a>
+    <a>Aktualna data symulowana: <span th:text="${simulatedDate}"></span></a>
+
+  </nav>
+</header>
+<main>
+  <section>
+    <h2>Podsumowanie</h2>
+    <p>Liczba klientów: <span th:text="${clientsCount}">0</span></p>
+    <p>Liczba abonamentów: <span th:text="${abonamentsCount}">0</span></p>
+    <p>Liczba należności: <span th:text="${billingsCount}">0</span></p>
+    <p>Liczba wpłat: <span th:text="${paymentsCount}">0</span></p>
+  </section>
+  <section>
+    <h2>Ostatnie Powiadomienia</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Data</th>
+        <th>Abonament ID</th>
+        <th>Klient</th>
+        <th>Treść</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="n : ${notifications}">
+        <td th:text="${n.dataUtworzenia}">2025-04-01</td>
+        <td th:text="${n.klient.abonamenty[0].id}">1</td>
+        <td th:text="${n.klient.imie} + ' ' + ${n.klient.nazwisko}">Jan Kowalski</td>
+        <td th:text="${n.tresc}">Treść powiadomienia</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 Telewizja App</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Cennik - Admin</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Cennik</h1>
+  <nav>
+    <a th:href="@{/templates/admin/dashboard}">Dashboard</a>
+    <a th:href="@{/templates/admin/clients}">Klienci</a>
+    <a th:href="@{/templates/admin/abonaments}">Abonamenty</a>
+    <a th:href="@{/templates/admin/billings}">Należności</a>
+    <a th:href="@{/templates/admin/payments}">Wpłaty</a>
+    <a th:href="@{/templates/admin/pricelist}">Cennik</a>
+    <a th:href="@{/templates/admin/notifications}">Powiadomienia</a>
+    <a>Aktualna data symulowana: <span th:text="${simulatedDate}"></span></a>
+  </nav>
+</header>
+<main>
+  <section>
+    <h2>Historia cen i aktualny cennik</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Typ usługi</th>
+        <th>Cena</th>
+        <th>Data od</th>
+        <th>Data do</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="price : ${pricelist}">
+        <td th:text="${price.id}">1</td>
+        <td th:text="${price.typUslugi}">BASIC</td>
+        <td th:text="${price.cena}">100.00</td>
+        <td th:text="${price.dataOd}">2025-01-01</td>
+        <td th:text="${price.dataDo}">2025-01-31</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 Telewizja App</p>
+</footer>
+</body>
+</html>

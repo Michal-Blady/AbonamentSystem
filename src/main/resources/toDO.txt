@@ -1,0 +1,13 @@
+//                  hibernate zrobić by działał                     30min       ***
+funkcjonalności z polecenia
+    create/edit/delete - klienci\abonamenty     30min       ***
+    naliczanie płatności                        20min       ***
+    wysyłanie monitów o płatnościach            20min       **
+    eskalowanie monitów                         10min       *
+    symulacja czasu                             20min       **
+    ręczne rejestrowanie wpłat i korekt         30min       ***
+//                  przeglądanie należności i wpłat             20min       ***
+eliminacja błędów                               30min       *
+usunąć komentarze                               10min       ***
+//                  usunąć stare pliki/klasy np. dla home/starego dashboard
+                                    TOTAL:      3h 40 min 

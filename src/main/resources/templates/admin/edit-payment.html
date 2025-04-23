@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja Wpłaty - Admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Edycja Wpłaty</h1>
+    <nav>
+        <a th:href="@{/templates/admin/payments}">Powrót do listy wpłat</a>
+    </nav>
+</header>
+<main>
+    <section>
+        <form th:action="@{/templates/admin/edit-payment}" th:object="${payment}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div>
+                <label>Abonament ID:</label>
+                <input type="number" th:field="*{abonament.id}" required readonly="readonly" />
+            </div>
+            <div>
+                <label>Termin wpłaty:</label>
+                <input type="date" th:field="*{terminWplaty}" required />
+            </div>
+            <div>
+                <label>Kwota wpłaty:</label>
+                <input type="number" step="0.01" th:field="*{kwotaWplaty}" required />
+            </div>
+            <button type="submit">Zapisz zmiany</button>
+        </form>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2025 Telewizja App</p>
+</footer>
+</body>
+</html>

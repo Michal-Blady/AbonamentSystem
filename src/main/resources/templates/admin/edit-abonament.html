@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><title>Edycja Abonamentu</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Edycja Abonamentu</h1>
+  <nav><a th:href="@{/templates/admin/abonaments}">Powrót</a></nav>
+</header>
+<main>
+  <form th:action="@{/templates/admin/edit-abonament}" th:object="${abonament}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div>
+      <label>Typ:</label>
+      <select th:field="*{typAbonamentu}">
+        <option th:each="t : ${T(pl.edu.pwr.lab06.entity.TypAbonamentu).values()}"
+                th:value="${t}" th:text="${t}"></option>
+      </select>
+    </div>
+    <div>
+      <label>Klient:</label>
+      <select th:field="*{klient.id}">
+        <option th:each="c : ${clients}"
+                th:value="${c.id}"
+                th:text="${c.imie} + ' ' + ${c.nazwisko}"
+                th:selected="${c.id == abonament.klient.id}"></option>
+      </select>
+    </div>
+    <button type="submit">Zapisz</button>
+  </form>
+</main>
+</body>
+</html>

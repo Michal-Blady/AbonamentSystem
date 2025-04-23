@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cennik</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Cennik</h1>
+    <nav>
+        <a th:href="@{/templates/client/dashboard}">Dashboard</a>
+        <a th:href="@{/templates/client/abonaments}">Abonamenty</a>
+        <a th:href="@{/templates/client/billings}">Należności</a>
+        <a th:href="@{/templates/client/payments}">Wpłaty</a>
+        <a th:href="@{/templates/client/pricelist}">Cennik</a>
+        <a th:href="@{/templates/client/notifications}">Powiadomienia</a>
+        <span>Aktualna data symulowana: <span class="simulated-date">…</span></span>
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>Historia cen i aktualny cennik</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th><th>Typ usługi</th><th>Cena</th><th>Data od</th><th>Data do</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${pricelist}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.typUslugi}"></td>
+                <td th:text="${p.cena}"></td>
+                <td th:text="${p.dataOd}"></td>
+                <td th:text="${p.dataDo}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer><p>&copy; 2025 Telewizja App</p></footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Abonamenty - Admin</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Abonamenty</h1>
+  <nav>
+    <a th:href="@{/templates/admin/dashboard}">Dashboard</a>
+    <a th:href="@{/templates/admin/clients}">Klienci</a>
+    <a th:href="@{/templates/admin/abonaments}">Abonamenty</a>
+    <a th:href="@{/templates/admin/billings}">Należności</a>
+    <a th:href="@{/templates/admin/payments}">Wpłaty</a>
+    <a th:href="@{/templates/admin/pricelist}">Cennik</a>
+    <a th:href="@{/templates/admin/notifications}">Powiadomienia</a>
+    <a>Aktualna data symulowana: <span th:text="${simulatedDate}"></span></a>
+  </nav>
+</header>
+<main>
+  <section>
+    <h2>Lista Abonamentów</h2>
+    <a th:href="@{/templates/admin/add-abonament}" class="btn">Dodaj abonament</a>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Typ abonamentu</th>
+        <th>Klient</th>
+        <th>Akcje</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="abon : ${abonaments}">
+        <td th:text="${abon.id}"></td>
+        <td th:text="${abon.typAbonamentu}"></td>
+        <td th:text="${abon.klient.imie} + ' ' + ${abon.klient.nazwisko}"></td>
+        <td>
+          <a th:href="@{'/admin/edit-abonament/' + ${abon.id}}" class="btn">Edytuj</a>
+          <a th:href="@{'/admin/delete-abonament/' + ${abon.id}}"
+             onclick="return confirm('Usuń abonament?');" class="btn">Usuń</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 Telewizja App</p>
+</footer>
+</body>
+</html>

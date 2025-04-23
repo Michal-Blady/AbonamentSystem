@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><title>Dodaj Abonament</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Dodaj Abonament</h1>
+    <nav><a th:href="@{/templates/admin/abonaments}">Powrót</a></nav>
+</header>
+<main>
+    <form th:action="@{/templates/admin/add-abonament}" th:object="${abonament}" method="post">
+        <div>
+            <label>Typ:</label>
+            <select th:field="*{typAbonamentu}">
+                <option th:each="t : ${T(pl.edu.pwr.lab06.entity.TypAbonamentu).values()}"
+                        th:value="${t}" th:text="${t}">BASIC</option>
+            </select>
+        </div>
+        <div>
+            <label>Klient:</label>
+            <select th:field="*{klient.id}">
+                <option th:each="c : ${clients}"
+                        th:value="${c.id}"
+                        th:text="${c.imie} + ' ' + ${c.nazwisko}">Jan Kowalski</option>
+            </select>
+        </div>
+        <button type="submit">Dodaj</button>
+    </form>
+</main>
+</body>
+</html>
